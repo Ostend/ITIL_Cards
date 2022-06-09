@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 
 import DataBase.Repository;
 import Entities.Card;
+import Entities.SavedTerm;
 
 public class FlashCards extends AppCompatActivity {
     //todo add ability to flip the cards so user sees answer and has to guess term
@@ -37,6 +38,8 @@ public class FlashCards extends AppCompatActivity {
     private int cardStatus = 0;
     private List<Card> allCards = new ArrayList<>();
     private HashMap<Card, Integer> wrongAnswers = new HashMap<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,9 @@ public class FlashCards extends AppCompatActivity {
         int lesson = getIntent().getIntExtra("lesson", 0);
                 if(lesson == 1) {
                     allCards = repo.getmAllCards();
+                }else if(lesson == 10){
+                    allCards.addAll(SavedTerm.getSavedTerms());
+                    ((ImageButton) findViewById(R.id.cutSavedTerm)).setVisibility(View.VISIBLE);
                 }else {
                     allCards = repo.getCardsByLesson(lesson);
                 }
@@ -97,7 +103,11 @@ public class FlashCards extends AppCompatActivity {
     public void checkButton(View view) {
         //pos = pos + 1;
         correctNum = correctNum + 1;
+        Log.d("savedTerm", String.valueOf(SavedTerm.getSavedTerms().size()));
         allCards.remove(pos);
+        Log.d("savedTerm", String.valueOf(SavedTerm.getSavedTerms().size()));
+
+
         if(allCards.size() <= pos){
             ((TextView) findViewById(R.id.cardText)).setText("No more terms");
             ((TextView) findViewById(R.id.numberText)).setText( correctNum-1 + "/" + allCards.size());
@@ -129,5 +139,17 @@ public class FlashCards extends AppCompatActivity {
     }
 
     public void saveTerm(View view) {
+        //TODO If already exists in list, TOAST and do not add to list
+        Repository repo = new Repository(getApplication());
+        SavedTerm.addSavedTerm(repo.getCardByID(allCards.get(pos).getCard_id()));
+
+    }
+
+    public void homeOnClick(View view) {
+        //when clicked, pack the saved term list in the intent
+    }
+
+    public void cutSavedTermOnClick(View view) {
+
     }
 }

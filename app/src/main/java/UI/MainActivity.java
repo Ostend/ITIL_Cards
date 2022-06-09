@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.itil_cards.R;
 
 import DataBase.Repository;
 import Entities.Card;
+import Entities.SavedTerm;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Repository repo = new Repository(getApplication());
 
-//        repo.insertCard(new Card("6 steps of optimization: ",
-//                "1.Understand and agree on the context in which the proposed optimization exists. 2.Assess the current state of the proposed optimization. 3.Agree what the future state and priorities of the organization should be. 4.Ensure optimization has the appropriate level of stakeholder engagement. 5.Execute the improvements iteratively. 6.Continually monitor the impact of the optimization.  ",
-//                "Guiding Principles", 3));
 
 
     }
@@ -50,5 +49,27 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(MainActivity.this, FlashCards.class);
         i.putExtra("lesson", 4);
         startActivity(i);
+    }
+
+    public void svsOnClick(View view) {
+        Intent i = new Intent(MainActivity.this, FlashCards.class);
+        i.putExtra("lesson", 5);
+        startActivity(i);
+    }
+
+    public void practicesOnClick(View view) {
+        Intent i = new Intent(MainActivity.this, FlashCards.class);
+        i.putExtra("lesson", 6);
+        startActivity(i);
+    }
+
+    public void savedTermsOnClick(View view) {
+        Intent i = new Intent(MainActivity.this, FlashCards.class);
+        if(SavedTerm.getSavedTerms().size() == 0){
+            Toast.makeText(this, "No Saved Terms", Toast.LENGTH_SHORT).show();
+        }else {
+            i.putExtra("lesson", 10);
+            startActivity(i);
+        }
     }
 }

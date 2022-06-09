@@ -18,7 +18,7 @@
 
         <Button
             android:id="@+id/keyTerms"
-            android:layout_width="95dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
@@ -27,59 +27,55 @@
 
         <Button
             android:id="@+id/principles"
-            android:layout_width="95dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:onClick="principlesOnClick"
             android:text="Guiding Principles"
-            android:textSize="8sp" />
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/dimensions"
-            android:layout_width="95dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:onClick="dimensionsOnClick"
             android:text="Four Dimensions"
-            android:textSize="8sp" />
+            android:textSize="10sp" />
 
         <Button
-            android:id="@+id/button5"
-            android:layout_width="95dp"
+            android:id="@+id/svs"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="Button" />
+            android:onClick="svsOnClick"
+            android:text="SVS" />
 
         <Button
-            android:id="@+id/button4"
-            android:layout_width="95dp"
+            android:id="@+id/practices"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="Button" />
+            android:onClick="practicesOnClick"
+            android:text="Practices"
+            android:textSize="10sp" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="95dp"
+            android:id="@+id/savedTerms"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="95dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:text="Button" />
+            android:onClick="savedTermsOnClick"
+            android:text="Saved Terms" />
 
         <Button
             android:id="@+id/learnButton"
-            android:layout_width="95dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"

@@ -61,8 +61,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="418dp"
-        android:layout_height="245dp"
+        android:id="@+id/linearLayout3"
+        android:layout_width="413dp"
+        android:layout_height="117dp"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,5 +107,28 @@
             android:layout_weight="0"
             android:onClick="saveTerm"
             app:srcCompat="@android:drawable/ic_input_get" />
+
+        <ImageButton
+            android:id="@+id/cutSavedTerm"
+            android:layout_width="45dp"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:onClick="cutSavedTermOnClick"
+            android:visibility="invisible"
+            app:srcCompat="?attr/actionModeCutDrawable" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="homeOnClick"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.515" />
 </androidx.constraintlayout.widget.ConstraintLayout>

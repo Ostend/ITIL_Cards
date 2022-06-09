@@ -14,6 +14,7 @@ public class Repository {
     private List<Card> mAllCards;
     private Card card;
 
+
     private static int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
