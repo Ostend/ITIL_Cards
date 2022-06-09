@@ -28,8 +28,8 @@ import Entities.Card;
 
 public class FlashCards extends AppCompatActivity {
     //todo add ability to flip the cards so user sees answer and has to guess term
-    //todo create hashmap of all 'wrong' answers and frequency of wrong
-    //todo shuffle terms
+    //todo SaveTerm to global list variable for personalized flashcards
+
 
     //if term, cardStatus = 0, if answer cardStatus = 1
     private int correctNum = 1;
@@ -42,12 +42,21 @@ public class FlashCards extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_cards);
         Repository repo = new Repository(getApplication());
-        allCards = repo.getmAllCards();
-        Collections.shuffle(allCards, new Random());
+
+
         Log.d("allCards", String.valueOf(allCards.size()));
 
         //Set the flash card with the term:
+        int lesson = getIntent().getIntExtra("lesson", 0);
+                if(lesson == 1) {
+                    allCards = repo.getmAllCards();
+                }else {
+                    allCards = repo.getCardsByLesson(lesson);
+                }
 
+
+
+        Collections.shuffle(allCards, new Random());
        ((TextView) findViewById(R.id.cardText)).setText(allCards.get(pos).getTerm());
        //todo use resource string
         ((TextView) findViewById(R.id.numberText)).setText(correctNum + "/" + allCards.size());
@@ -55,7 +64,6 @@ public class FlashCards extends AppCompatActivity {
     }
 
     public void wrongButton(View view) {
-        //todo Add Hashmap to track frequency of specific wrong answers
         //todo if answer wrong more than twice, add duplicate card into flashcards
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -76,10 +84,14 @@ public class FlashCards extends AppCompatActivity {
 
     public void repeatButton(View view) {
         //pos = pos + 1;
-
-        allCards.add(allCards.remove(pos));
-        ((TextView) findViewById(R.id.cardText)).setText(allCards.get(pos).getTerm());
-        cardStatus = 0;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                allCards.add(allCards.remove(pos));
+                ((TextView) findViewById(R.id.cardText)).setText(allCards.get(pos).getTerm());
+                cardStatus = 0;
+            }
+        }, 600);
     }
 
     public void checkButton(View view) {
@@ -114,5 +126,8 @@ public class FlashCards extends AppCompatActivity {
             ((TextView) findViewById(R.id.cardText)).setText(allCards.get(pos).getTerm());
         }
         return;
+    }
+
+    public void saveTerm(View view) {
     }
 }

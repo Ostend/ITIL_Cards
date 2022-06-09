@@ -24,6 +24,8 @@ public class Card {
         this.lesson_id = lesson_id;
     }
 
+
+
     public int getCard_id() {
         return card_id;
     }

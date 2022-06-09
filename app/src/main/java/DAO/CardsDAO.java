@@ -24,4 +24,7 @@ public interface CardsDAO {
     @Query("SELECT * FROM card")
     List<Card> getAllCards();
 
+    @Query("SELECT * FROM card WHERE card.lesson_id = :id")
+    List<Card> getCardsByLesson(int id);
+
 }

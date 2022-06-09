@@ -97,5 +97,14 @@
             android:onClick="wrongButton"
             app:srcCompat="@android:drawable/ic_delete"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/saveTerm"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0"
+            android:onClick="saveTerm"
+            app:srcCompat="@android:drawable/ic_input_get" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

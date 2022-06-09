@@ -69,6 +69,18 @@ public class Repository {
         return mAllCards;
     }
 
+    public List<Card> getCardsByLesson(int lessonId){
+        databaseExecutor.execute(()->{
+            mAllCards = mCardsDAO.getCardsByLesson(lessonId);
+        });
+        try{
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        return mAllCards;
+    }
+
 
 
 }
