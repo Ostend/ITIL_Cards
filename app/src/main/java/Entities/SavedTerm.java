@@ -17,4 +17,8 @@ public class SavedTerm {
     public static void deleteSavedTermItem(Card card){
         savedTerm.remove(card);
     }
+
+    public static void deleteSavedTermByIndex(int i){
+        savedTerm.remove(i);
+    }
 }

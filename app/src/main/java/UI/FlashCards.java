@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.itil_cards.R;
 
@@ -123,8 +124,6 @@ public class FlashCards extends AppCompatActivity {
             cardStatus = 0;
             }
 
-        //List.remove(index)
-
     }
 
     public void cardViewClick(View view) {
@@ -146,10 +145,13 @@ public class FlashCards extends AppCompatActivity {
     }
 
     public void homeOnClick(View view) {
-        //when clicked, pack the saved term list in the intent
+        Intent i = new Intent(FlashCards.this, MainActivity.class);
+        startActivity(i);
     }
 
     public void cutSavedTermOnClick(View view) {
-
+        //todo reflect immediately the term is cut/ take out of view
+        SavedTerm.deleteSavedTermByIndex(SavedTerm.getSavedTerms().indexOf(allCards.get(pos)));
+        Toast.makeText(this, "Term unsaved", Toast.LENGTH_SHORT).show();
     }
 }
