@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -30,7 +31,7 @@ import Entities.SavedTerm;
 
 public class FlashCards extends AppCompatActivity {
     //todo add ability to flip the cards so user sees answer and has to guess term
-    //todo SaveTerm to global list variable for personalized flashcards
+    //todo add text label to activity to dynamically change with title of the category of terms
 
 
     //if term, cardStatus = 0, if answer cardStatus = 1
@@ -112,12 +113,13 @@ public class FlashCards extends AppCompatActivity {
         if(allCards.size() <= pos){
             ((TextView) findViewById(R.id.cardText)).setText("No more terms");
             ((TextView) findViewById(R.id.numberText)).setText( correctNum-1 + "/" + allCards.size());
-            ImageButton check = findViewById(R.id.checkButton);
-            check.setEnabled(false);
             TextView cardV = findViewById(R.id.cardText);
             cardV.setOnClickListener(null);
-            ((ImageButton) findViewById(R.id.repeatButton)).setEnabled(false);
-            ((ImageButton) findViewById(R.id.wrongButton)).setEnabled(false);
+            ((ImageButton) findViewById(R.id.checkButton)).setVisibility(View.INVISIBLE);
+            ((ImageButton) findViewById(R.id.repeatButton)).setVisibility(View.INVISIBLE);
+            ((ImageButton) findViewById(R.id.wrongButton)).setVisibility(View.INVISIBLE);
+            ((ImageButton) findViewById(R.id.saveTerm)).setVisibility(View.INVISIBLE);
+            ((ImageButton) findViewById(R.id.cutSavedTerm)).setVisibility(View.INVISIBLE);
             return;
         }else{((TextView) findViewById(R.id.cardText)).setText(allCards.get(pos).getTerm());
             ((TextView) findViewById(R.id.numberText)).setText( correctNum + "/" + allCards.size());
@@ -140,8 +142,17 @@ public class FlashCards extends AppCompatActivity {
     public void saveTerm(View view) {
         //TODO If already exists in list, TOAST and do not add to list
         Repository repo = new Repository(getApplication());
+        //todo find saved term with same id
+
+        Toast.makeText(this, "Term saved", Toast.LENGTH_SHORT).show();
         SavedTerm.addSavedTerm(repo.getCardByID(allCards.get(pos).getCard_id()));
 
+//        if(SavedTerm.returnSavedTerm(allCards.get(pos).getCard_id())){
+//            Toast.makeText(this, "Already saved", Toast.LENGTH_SHORT).show();
+//        }else {
+//            Toast.makeText(this, "Term saved", Toast.LENGTH_SHORT).show();
+//            SavedTerm.addSavedTerm(repo.getCardByID(allCards.get(pos).getCard_id()));
+//        }
     }
 
     public void homeOnClick(View view) {

@@ -19,10 +19,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Repository repo = new Repository(getApplication());
+        //Repository repo = new Repository(getApplication());
+
+
+
     }
 
-
+    //Information security mgmt
+    //Relationship mgmt
+    //Supplier mgmt
+    //IT asset mgmt
+    //Monitoring and event mgmt
+    //Release mgmt
+    //Service configuration mgmt
+    //Service continuity mgmt
+    //Deployment mgmt
 
     public void learnButton(View view) {
         Intent i = new Intent(MainActivity.this, FlashCards.class);

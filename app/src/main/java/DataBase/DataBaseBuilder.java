@@ -10,7 +10,7 @@ import androidx.room.RoomDatabase;
 import DAO.CardsDAO;
 import Entities.Card;
 
-@Database(entities = {Card.class}, version=1, exportSchema = false)
+@Database(entities = {Card.class}, version=3, exportSchema = false)
 public abstract class DataBaseBuilder extends RoomDatabase {
     public abstract CardsDAO getCardsDAO();
 

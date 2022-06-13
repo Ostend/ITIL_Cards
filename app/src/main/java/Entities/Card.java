@@ -6,8 +6,9 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "card")
 public class Card {
+
     @PrimaryKey(autoGenerate = true)
-    private int card_id;
+    public int card_id;
 
     private String term;
 

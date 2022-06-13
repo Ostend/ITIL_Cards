@@ -21,4 +21,13 @@ public class SavedTerm {
     public static void deleteSavedTermByIndex(int i){
         savedTerm.remove(i);
     }
+
+//    public static boolean returnSavedTerm(int cardId){
+//
+//        if(savedTerm.contains(cardId)){
+//            return true;
+//        }
+//        return false;
+//    };
+
 }
